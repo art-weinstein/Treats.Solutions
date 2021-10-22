@@ -1,0 +1,22 @@
+@model TreatShop.Models.Treat;
+
+<h2>Treat Details</h2>
+
+<h3>@Html.DisplayNameFor(model => model.TreatName): @Html.DisplayFor(model => model.TreatName)</h3>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>This treat has no logged flavors</p>
+}
+else
+{
+  <h4>This treats flavors include: </h4>
+  <ul>
+    @foreach (var join in Model.JoinEntities)
+    {
+      <li>@join.Flavor.FlavorName</li>
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

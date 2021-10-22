@@ -7,5 +7,14 @@
   <p>There are no treats or flavors!</p>
 }
 
+else 
+{
+  <h3>Treats</h3>
+  @foreach (var treat in Model.Treat)
+  {
+    @Html.ActionLink($"{treat.TreatName}", "Details", "Treats", new{id = treat.TreatId})
+  }
+}
+
 <p>@Html.ActionLink("View all treats", "Index", "Treats")</p>
 <p>@Html.ActionLink("Register", "Index", "Account")</p>

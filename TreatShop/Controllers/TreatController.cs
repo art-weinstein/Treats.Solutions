@@ -32,6 +32,18 @@ namespace TreatShop.Controllers
       ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "TreatName");
       return View();
     }
+
+    [AllowAnonymous]
+
+    public ActionResult Details(int id)
+    {
+      var thisTreat = _db.Treats
+        .Include(treat => treat.JoinEntities)
+        .ThenInclude(join => join.Treat)
+        .FirstOrDefault(treat => treat.TreatId == id);
+      return View(thisTreat);
+    }
+
     [HttpPost]
     public async Task<ActionResult> Create (Treat treat, int FlavorId)
     {
