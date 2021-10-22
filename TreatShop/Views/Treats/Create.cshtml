@@ -1,0 +1,12 @@
+@model TreatShop.Models.Treat
+
+<h4>Create a treat</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.TreatName)
+  @Html.TextBoxFor(model =>model.TreatName)
+  <input type="submit" value ="Add treat">
+}
+<p>@Html.ActionLink("View treats", "Index")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
