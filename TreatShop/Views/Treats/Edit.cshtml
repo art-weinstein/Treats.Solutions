@@ -1,0 +1,19 @@
+@model TreatShop.Models.Treat
+
+<h2>Edit Treat</h2>
+
+<h4>Edit this treat: @Html.DisplayFor(model => model.TreatName)</h4>
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.TreatId)
+
+  @Html.LabelFor(model => model.TreatName)
+  @Html.EditorFor(model => model.TreatName)
+
+  @Html.Label("Select Flavor")
+  @Html.DropDownList("FlavorId")
+
+  <input type="submit" value="Save">
+}
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

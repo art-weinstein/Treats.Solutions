@@ -59,5 +59,27 @@ namespace TreatShop.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult Edit(int id)
+    {
+      var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
+      ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "TreatName");
+      return View(thisTreat);
+    }
+
+    [HttpPost]
+    public async Task<ActionResult> Edit(Treat treat, int FlavorId)
+    {
+    var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    var currentUser = await _userManager.FindByIdAsync(userId);
+    treat.User = currentUser;
+    if (FlavorId != 0)
+    {
+      _db.TreatFlavor.Add(new TreatFlavor() {FlavorId = FlavorId, TreatId = treat.TreatId});
+    }
+    _db.Entry(treat).State = EntityState.Modified;
+    _db.SaveChanges();
+    return RedirectToAction("Index");
+    }
   }
 }
