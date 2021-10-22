@@ -1,0 +1,8 @@
+@using TreatShop.Models;
+@model dynamic;
+
+<h1>Sweet and Savory Treats!</h1>
+@if(@Model.Treat.Count == 0 && Model.Flavor.Count == 0)
+{
+  <p>There are no treats or flavors!</p>
+}
