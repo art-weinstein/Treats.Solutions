@@ -9,8 +9,8 @@ using TreatShop.Models;
 namespace TreatShop.Migrations
 {
     [DbContext(typeof(TreatShopContext))]
-    [Migration("20211022171527_initial")]
-    partial class initial
+    [Migration("20211022185048_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
